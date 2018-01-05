@@ -20,6 +20,5 @@ export default class UserScreen extends React.Component {
 }
 const styles = StyleSheet.create({
   container: {
-
   },
 });

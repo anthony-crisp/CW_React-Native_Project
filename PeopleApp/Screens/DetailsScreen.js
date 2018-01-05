@@ -20,6 +20,5 @@ export default class DetailsScreen extends React.Component {
 }
 const styles = StyleSheet.create({
   container: {
-
   },
 });
