@@ -1,23 +1,25 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Expo from 'expo';
+import { StackNavigator } from 'react-navigation'
+import UserScreen from './Screens/UserScreen'
+import DetailsScreen from './Screens/DetailsScreen'
+
+
+const PeopleApp = StackNavigator({
+  UserScreen: { screen: UserScreen },
+  Profile: { screen: DetailsScreen },
+},
+{
+  navigationOptions: {
+    headerStyle: {
+      marginTop: Expo.Constants.statusBarHeight
+    }
+  }
+});
 
 export default class App extends React.Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
-    );
+    return <PeopleApp />;
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
