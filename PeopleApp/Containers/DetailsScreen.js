@@ -1,26 +1,25 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Expo from 'expo';
-import { StackNavigator } from 'react-navigation'
+import { StyleSheet, Text, Image, View, ScrollView } from 'react-native';
+import { Tile, List, ListItem } from 'react-native-elements';
+import styles from './Styles/UsersStyle';
 
-class DetailsScreen extends React.Component {
+export default class DetailsScreen extends React.Component {
   static navigationOptions = {
     title: 'Detail View',
   };
   render() {
-    const { navigate } = this.props.navigation;
+    const { name, avatar, dob, score } = this.props.navigation.state.params;
     return (
-      <View style={styles.container}>
-        <Text
-        onPress= { () => navigate('Users') }>Some Details
-        </Text>
+      <View style={styles.headerColumn}>
+        <View style={styles.outerCircle}>
+          <Image
+            style={styles.userImage}
+            source={{
+              uri: avatar,
+            }}
+          />
+        </View>
       </View>
-    )
+    );
   }
 }
-const styles = StyleSheet.create({
-  container: {
-  },
-});
-
-export default DetailsScreen;
