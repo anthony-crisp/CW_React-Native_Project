@@ -1,11 +1,11 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation'
-import UserScreen from './Screens/UserScreen'
-import DetailsScreen from './Screens/DetailsScreen'
+import UsersScreen from './Containers/UsersScreen'
+import DetailsScreen from './Containers/DetailsScreen'
 
 
-const PeopleApp = StackNavigator({
-  UserScreen: { screen: UserScreen },
+export const PeopleApp = StackNavigator({
+  Users: { screen: UsersScreen },
   Profile: { screen: DetailsScreen },
 },
 {
