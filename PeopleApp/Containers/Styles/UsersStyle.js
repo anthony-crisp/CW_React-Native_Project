@@ -74,7 +74,7 @@ export default StyleSheet.create({
     borderWidth: 5,
     borderStyle: 'solid',
     margin: 25,
-    borderColor: Colors.frost,
+    borderColor: Colors.coal,
     backgroundColor: 'white',
   },
   userImage: {

@@ -1,7 +1,7 @@
 const colors = {
   background: '#1F0808',
   clear: 'rgba(0,0,0,0)',
-  facebook: '#03A9F4',
+  facebook: '#4981CE',
   transparent: 'rgba(0,0,0,0)',
   silver: '#F7F7F7',
   steel: '#CCCCCC',
@@ -12,7 +12,7 @@ const colors = {
   windowTint: 'rgba(0, 0, 0, 0.4)',
   panther: '#161616',
   charcoal: '#595959',
-  coal: '#2d2d2d',
+  coal: '#D3D3D3',
   bloodOrange: '#fb5f26',
   snow: 'white',
   ember: 'rgba(164, 0, 48, 0.5)',
