@@ -31,7 +31,7 @@ export default class DetailsScreen extends React.Component {
               borderRadius: 5,
               marginLeft: 0,
               marginRight: 0,
-              marginBottom: 0,
+              marginBottom: 15,
               marginTop: 20,
             }}
             title="Edit"
