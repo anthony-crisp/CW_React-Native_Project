@@ -52,12 +52,12 @@ export default StyleSheet.create({
   },
   userScore: {
     alignSelf: 'stretch',
-    fontSize: 15,
+    fontSize: 18,
     color: Colors.black,
     textAlign: 'center',
     marginTop: 10,
   },
-  userBirtday: {
+  userBirthday: {
     alignSelf: 'stretch',
     fontSize: 15,
     color: Colors.charcoal,

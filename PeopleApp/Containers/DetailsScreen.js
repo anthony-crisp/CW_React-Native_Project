@@ -23,7 +23,7 @@ export default class DetailsScreen extends React.Component {
           <View style={styles.headerColumn}>
             <Text style={styles.userName}>{name}</Text>
             <Text style={styles.userAge}>{getAge(dob)}</Text>
-            <Text style={styles.userBirtday}>{dateDiff(birthdayThisYear(dob), new Date())}</Text>
+            <Text style={styles.userBirthday}>{dateDiff(birthdayThisYear(dob), new Date())}</Text>
             <Text style={styles.userScore}>Rating: {score}</Text>
           </View>
           <Button buttonStyle={styles.editButton} title="Edit" />
