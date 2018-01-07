@@ -9,12 +9,6 @@ export default StyleSheet.create({
     alignItems: 'center',
     backgroundColor: Colors.frost,
   },
-  logo: {
-    marginTop: Metrics.doubleSection,
-    height: Metrics.images.logo,
-    width: Metrics.images.logo,
-    resizeMode: 'contain',
-  },
   row: {
     flex: 1,
     width: Metrics.screenWidth - Metrics.doubleBaseMargin,
@@ -42,6 +36,33 @@ export default StyleSheet.create({
     marginBottom: Metrics.smallMargin,
     marginLeft: 10,
   },
+  userName: {
+    alignSelf: 'stretch',
+    fontSize: 30,
+    color: Colors.black,
+    textAlign: 'center',
+    marginBottom: Metrics.smallMargin,
+  },
+  userAge: {
+    alignSelf: 'stretch',
+    fontSize: 25,
+    color: Colors.black,
+    textAlign: 'center',
+    marginTop: Metrics.marginVertical,
+  },
+  userScore: {
+    alignSelf: 'stretch',
+    fontSize: 15,
+    color: Colors.black,
+    textAlign: 'center',
+    marginTop: 10,
+  },
+  userBirtday: {
+    alignSelf: 'stretch',
+    fontSize: 15,
+    color: Colors.charcoal,
+    textAlign: 'center',
+  },
   listContent: {
     marginTop: Metrics.baseMargin,
   },
@@ -67,7 +88,6 @@ export default StyleSheet.create({
   headerColumn: {
     backgroundColor: 'white',
     alignItems: 'center',
-    elevation: 1,
     marginTop: 10,
     marginBottom: Metrics.smallMargin,
     marginLeft: 10,
