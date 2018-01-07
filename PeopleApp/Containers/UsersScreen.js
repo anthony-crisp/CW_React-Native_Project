@@ -1,13 +1,11 @@
 import React from 'react';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
-import { autobind } from 'core-decorators';
+import { autobind } from 'core-decorators';// eslint-disable-line
 import styles from './Styles/UsersStyle';
 
 @autobind
 export default class UserScreen extends React.Component {
-  /*global navigationOptions */
-  /*eslint no-undef: "error"*/
-  static navigationOptions = {
+  static navigationOptions = {// eslint-disable-line
     title: 'People',
   };
 

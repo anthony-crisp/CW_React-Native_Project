@@ -5,9 +5,7 @@ import { getAge, birthdayThisYear, dateDiff } from '../Helpers/dateHelpers.js';
 import styles from './Styles/UsersStyle';
 
 export default class DetailsScreen extends React.Component {
-  /*global navigationOptions */
-  /*eslint no-undef: "error"*/
-  static navigationOptions = {
+  static navigationOptions = {// eslint-disable-line
     title: 'Detail View',
   };
   render() {
