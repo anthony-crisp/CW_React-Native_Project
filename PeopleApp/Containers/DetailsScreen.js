@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, Image, View, ScrollView } from 'react-native';
-import { Card, Tile, List, ListItem, Button } from 'react-native-elements';
+import { Text, Image, View, ScrollView } from 'react-native';
+import { Card, Button } from 'react-native-elements';
 import { getAge, birthdayThisYear, dateDiff } from '../Helpers/dateHelpers.js';
 import styles from './Styles/UsersStyle';
 
