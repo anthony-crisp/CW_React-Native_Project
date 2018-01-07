@@ -23,8 +23,6 @@ export const birthdayThisYear = date => {
 export const dateDiff = (dt1, dt2) => {
   var ret = { days: 0, months: 0, years: 0 };
 
-  if (dt1 === dt2) return ret;
-
   if (dt1 > dt2) {
     var dtmp = dt2;
     dt2 = dt1;
@@ -56,7 +54,9 @@ export const dateDiff = (dt1, dt2) => {
     ret['months'] += 12;
     ret['years'] -= 1;
   }
-  return `${ret.months}${ret.months === 1 ? ' month ' : ' months '}and ${ret.days}${
+  var string = `${ret.months}${ret.months === 1 ? ' month ' : ' months '}and ${ret.days}${
     ret.days === 1 ? ' day ' : ' days '
   }until next birthday`;
+
+  return string;
 };

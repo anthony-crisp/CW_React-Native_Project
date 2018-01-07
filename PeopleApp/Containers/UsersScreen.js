@@ -1,9 +1,10 @@
 import React from 'react';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
-import { StackNavigator } from 'react-navigation';
 import styles from './Styles/UsersStyle';
 
 export default class UserScreen extends React.Component {
+  /*global navigationOptions */
+  /*eslint no-undef: "error"*/
   static navigationOptions = {
     title: 'People',
   };
