@@ -93,4 +93,12 @@ export default StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
   },
+  editButton: {
+    backgroundColor: Colors.facebook,
+    borderRadius: 5,
+    marginLeft: 0,
+    marginRight: 0,
+    marginBottom: 15,
+    marginTop: 20,
+  },
 });

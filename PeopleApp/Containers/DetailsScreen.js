@@ -24,18 +24,7 @@ export default class DetailsScreen extends React.Component {
             <Text style={styles.userBirtday}>{dateDiff(birthdayThisYear(dob), new Date())}</Text>
             <Text style={styles.userScore}>Rating: {score}</Text>
           </View>
-          <Button
-            style={styles.editButton}
-            backgroundColor={'#03A9F4'}
-            buttonStyle={{
-              borderRadius: 5,
-              marginLeft: 0,
-              marginRight: 0,
-              marginBottom: 15,
-              marginTop: 20,
-            }}
-            title="Edit"
-          />
+          <Button buttonStyle={styles.editButton} title="Edit" />
         </Card>
       </ScrollView>
     );
