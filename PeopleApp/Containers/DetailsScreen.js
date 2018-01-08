@@ -1,15 +1,39 @@
 import React from 'react';
 import { Text, Image, View, ScrollView } from 'react-native';
 import { Card, Button } from 'react-native-elements';
+import { autobind } from 'core-decorators';// eslint-disable-line
 import { getAge, birthdayThisYear, dateDiff } from '../Helpers/dateHelpers.js';
+import renderIf from '../Helpers/renderHelper.js';
 import styles from './Styles/UsersStyle';
 
+@autobind
 export default class DetailsScreen extends React.Component {
+  constructor(props) {
+    super();
+    this.state = { isEditMode: false };
+  }
   static navigationOptions = {// eslint-disable-line
     title: 'Detail View',
   };
+  enterEditMode() {
+    this.setState({ isEditMode: true });
+  }
+
+  exitEditMode() {
+    this.setState({ isEditMode: false });
+  }
   render() {
     const { name, avatar, dob, score } = this.props.navigation.state.params;
+    const editButton = (
+      <Button buttonStyle={styles.editButton} title="Edit" onPress={this.enterEditMode} />
+    );
+    const editMode = (
+      <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
+        <Button buttonStyle={styles.cancelButton} title="Cancel" onPress={this.exitEditMode} />
+        <Button buttonStyle={styles.saveButton} title="Save" onPress={this.exitEditMode} />
+      </View>
+    );
+
     return (
       <ScrollView>
         <Card>
@@ -24,9 +48,19 @@ export default class DetailsScreen extends React.Component {
             <Text style={styles.userBirthday}>{dateDiff(birthdayThisYear(dob), new Date())}</Text>
             <Text style={styles.userScore}>Rating: {score}</Text>
           </View>
-          <Button buttonStyle={styles.editButton} title="Edit" />
+          <View>
+            {renderIf(!this.state.isEditMode, editButton)}
+
+            {renderIf(this.state.isEditMode, editMode)}
+          </View>
         </Card>
       </ScrollView>
     );
   }
 }
+// <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
+// <Button buttonStyle={styles.cancelButton} title="Cancel" />
+// <Button buttonStyle={styles.saveButton} title="Save" />
+// <Button buttonStyle={styles.editButton} title="Edit" />
+// <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
+// <Button buttonStyle={styles.editButton} title="Edit" />
