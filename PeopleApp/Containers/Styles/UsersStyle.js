@@ -125,6 +125,8 @@ export default StyleSheet.create({
   },
   incrementButton: {
     justifyContent: 'center',
-    backgroundColor: 'white',
+    backgroundColor: Colors.transparent,
+    height: 10,
+    marginTop: 8,
   },
 });

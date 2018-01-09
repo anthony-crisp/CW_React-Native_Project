@@ -5,11 +5,12 @@ import { autobind } from 'core-decorators';// eslint-disable-line
 import { getAge, birthdayThisYear, dateDiff } from '../Helpers/dateHelpers.js';
 import renderIf from '../Helpers/renderHelper.js';
 import styles from './Styles/UsersStyle';
+
 @autobind
 export default class DetailsScreen extends React.Component {
   constructor(props) {
-    super();
-    this.state = { isEditMode: false };
+    super(props);
+    this.state = { isEditMode: false, score: props.navigation.state.params.score };
   }
   static navigationOptions = {// eslint-disable-line
     title: 'Detail View',
@@ -17,10 +18,26 @@ export default class DetailsScreen extends React.Component {
   enterEditMode() {
     this.setState({ isEditMode: true });
   }
-
-  exitEditMode() {
-    this.setState({ isEditMode: false });
+  increment() {
+    this.setState({
+      score: this.state.score + 1,
+    });
   }
+  decrement() {
+    this.setState({
+      score: this.state.score - 1,
+    });
+  }
+
+  exitEditModeSave() {
+    const newScore = this.state.score;
+    this.setState({ isEditMode: false, score: newScore });
+  }
+  exitEditModeCancel() {
+    const oldScore = this.props.navigation.state.params.score;
+    this.setState({ isEditMode: false, score: oldScore });
+  }
+
   render() {
     const { name, avatar, dob, score } = this.props.navigation.state.params;
     const editButton = (
@@ -28,8 +45,12 @@ export default class DetailsScreen extends React.Component {
     );
     const editMode = (
       <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
-        <Button buttonStyle={styles.cancelButton} title="Cancel" onPress={this.exitEditMode} />
-        <Button buttonStyle={styles.saveButton} title="Save" onPress={this.exitEditMode} />
+        <Button
+          buttonStyle={styles.cancelButton}
+          title="Cancel"
+          onPress={this.exitEditModeCancel}
+        />
+        <Button buttonStyle={styles.saveButton} title="Save" onPress={this.exitEditModeSave} />
       </View>
     );
 
@@ -50,16 +71,18 @@ export default class DetailsScreen extends React.Component {
               {this.state.isEditMode ? (
                 <Button
                   buttonStyle={styles.incrementButton}
-                  textStyle={{ color: 'black' }}
+                  textStyle={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}
                   title="-"
+                  onPress={this.decrement}
                 />
               ) : null}
-              <Text style={styles.userScore}>{score}</Text>
+              <Text style={styles.userScore}>{this.state.score ? this.state.score : score}</Text>
               {this.state.isEditMode ? (
                 <Button
                   buttonStyle={styles.incrementButton}
-                  textStyle={{ color: 'black' }}
+                  textStyle={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}
                   title="+"
+                  onPress={this.increment}
                 />
               ) : null}
             </View>
