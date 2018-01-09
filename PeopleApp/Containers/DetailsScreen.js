@@ -5,7 +5,6 @@ import { autobind } from 'core-decorators';// eslint-disable-line
 import { getAge, birthdayThisYear, dateDiff } from '../Helpers/dateHelpers.js';
 import renderIf from '../Helpers/renderHelper.js';
 import styles from './Styles/UsersStyle';
-
 @autobind
 export default class DetailsScreen extends React.Component {
   constructor(props) {
@@ -46,11 +45,27 @@ export default class DetailsScreen extends React.Component {
             <Text style={styles.userName}>{name}</Text>
             <Text style={styles.userAge}>{getAge(dob)}</Text>
             <Text style={styles.userBirthday}>{dateDiff(birthdayThisYear(dob), new Date())}</Text>
-            <Text style={styles.userScore}>Rating: {score}</Text>
+            <View style={{ flexDirection: 'row' }}>
+              <Text style={styles.userScore}>Rating: </Text>
+              {this.state.isEditMode ? (
+                <Button
+                  buttonStyle={styles.incrementButton}
+                  textStyle={{ color: 'black' }}
+                  title="-"
+                />
+              ) : null}
+              <Text style={styles.userScore}>{score}</Text>
+              {this.state.isEditMode ? (
+                <Button
+                  buttonStyle={styles.incrementButton}
+                  textStyle={{ color: 'black' }}
+                  title="+"
+                />
+              ) : null}
+            </View>
           </View>
           <View>
             {renderIf(!this.state.isEditMode, editButton)}
-
             {renderIf(this.state.isEditMode, editMode)}
           </View>
         </Card>
@@ -58,9 +73,3 @@ export default class DetailsScreen extends React.Component {
     );
   }
 }
-// <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
-// <Button buttonStyle={styles.cancelButton} title="Cancel" />
-// <Button buttonStyle={styles.saveButton} title="Save" />
-// <Button buttonStyle={styles.editButton} title="Edit" />
-// <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
-// <Button buttonStyle={styles.editButton} title="Edit" />

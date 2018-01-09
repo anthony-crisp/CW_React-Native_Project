@@ -123,4 +123,8 @@ export default StyleSheet.create({
     marginBottom: 15,
     marginTop: 20,
   },
+  incrementButton: {
+    justifyContent: 'center',
+    backgroundColor: 'white',
+  },
 });
