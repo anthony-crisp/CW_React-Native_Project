@@ -44,7 +44,7 @@ export default class DetailsScreen extends React.Component {
       <Button buttonStyle={styles.editButton} title="Edit" onPress={this.enterEditMode} />
     );
     const editMode = (
-      <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
+      <View style={styles.editView}>
         <Button
           buttonStyle={styles.cancelButton}
           title="Cancel"
@@ -80,7 +80,7 @@ export default class DetailsScreen extends React.Component {
               {this.state.isEditMode ? (
                 <Button
                   buttonStyle={styles.incrementButton}
-                  textStyle={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}
+                  textStyle={styles.incrementText}
                   title="+"
                   onPress={this.increment}
                 />

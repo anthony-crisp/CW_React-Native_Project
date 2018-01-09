@@ -129,4 +129,14 @@ export default StyleSheet.create({
     height: 10,
     marginTop: 8,
   },
+  incrementText: {
+    color: 'black',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  editView: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
 });
