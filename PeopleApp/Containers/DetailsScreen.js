@@ -2,8 +2,8 @@ import React from 'react';
 import { Text, Image, View, ScrollView } from 'react-native';
 import { Card, Button } from 'react-native-elements';
 import { autobind } from 'core-decorators';// eslint-disable-line
-import { getAge, birthdayThisYear, dateDiff } from '../Helpers/dateHelpers.js';
-import renderIf from '../Helpers/renderHelper.js';
+import { getAge, birthdayThisYear, dateDiff } from '../Helpers/dateHelpers';
+import renderIf from '../Helpers/renderHelper';
 import styles from './Styles/UsersStyle';
 
 @autobind
