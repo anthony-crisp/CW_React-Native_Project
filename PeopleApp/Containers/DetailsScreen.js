@@ -5,6 +5,7 @@ import { autobind } from 'core-decorators';// eslint-disable-line
 import { getAge, birthdayThisYear, dateDiff } from '../Helpers/dateHelpers';
 import renderIf from '../Helpers/renderHelper';
 import styles from './Styles/UsersStyle';
+import { API_URL } from '../Helpers/settings';
 
 @autobind
 export default class DetailsScreen extends React.Component {
@@ -15,14 +16,17 @@ export default class DetailsScreen extends React.Component {
   static navigationOptions = {// eslint-disable-line
     title: 'Detail View',
   };
+
   enterEditMode() {
     this.setState({ isEditMode: true });
   }
+
   increment() {
     this.setState({
       score: this.state.score + 1,
     });
   }
+
   decrement() {
     this.setState({
       score: this.state.score - 1,
@@ -31,10 +35,20 @@ export default class DetailsScreen extends React.Component {
 
   exitEditModeSave() {
     const newScore = this.state.score;
-    this.setState({ isEditMode: false, score: newScore });
+    this.setState({ isEditMode: false, score: newScore, newScore });
+    fetch(`${API_URL}update`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: this.props.navigation.state.params.id, score: newScore }),
+    })
+      .then(response => response.json())
+      .then(responseJson => this.setState({ isLoading: false, people: responseJson }));
   }
+
   exitEditModeCancel() {
-    const oldScore = this.props.navigation.state.params.score;
+    const oldScore = this.state.newScore || this.props.navigation.state.params.score;
     this.setState({ isEditMode: false, score: oldScore });
   }
 

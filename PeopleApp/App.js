@@ -1,4 +1,5 @@
 import React from 'react';
+import { DeviceEventEmitter } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Expo from 'expo';
 import UsersScreen from './Containers/UsersScreen';
@@ -18,8 +19,31 @@ export const PeopleApp = StackNavigator(
   }
 );
 
+function getCurrentRouteName(navigationState) {
+  if (!navigationState) {
+    return null;
+  }
+  const route = navigationState.routes[navigationState.index];
+  // dive into nested navigators
+  if (route.routes) {
+    return getCurrentRouteName(route);
+  }
+  return route.routeName;
+}
+
 export default class App extends React.Component {
   render() {
-    return <PeopleApp />;
+    return (
+      <PeopleApp
+        onNavigationStateChange={(prevState, currentState) => {
+          const currentScreen = getCurrentRouteName(currentState);
+          const prevScreen = getCurrentRouteName(prevState);
+
+          if (prevScreen !== currentScreen) {
+            DeviceEventEmitter.emit('updatePeople');
+          }
+        }}
+      />
+    );
   }
 }

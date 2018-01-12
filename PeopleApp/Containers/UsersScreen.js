@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, DeviceEventEmitter } from 'react-native';
 import { autobind } from 'core-decorators';// eslint-disable-line
 import styles from './Styles/UsersStyle';
 import { API_URL } from '../Helpers/settings';
@@ -13,14 +13,24 @@ export default class UserScreen extends React.Component {
   static navigationOptions = {// eslint-disable-line
     title: 'People',
   };
+
   keyExtractor(item, index) {
     return index;
   }
+
+  componentWillUnmount() {
+    if (this.listener) {
+      this.listener.remove();
+    }
+  }
+
   componentDidMount() {
+    this.listener = DeviceEventEmitter.addListener('updatePeople', this.getPeople);
     this.getPeople();
   }
+
   getPeople() {
-    fetch(`${API_URL}/all`, { method: 'GET' })
+    fetch(`${API_URL}all`)
       .then(response => response.json())
       .then(responseJson => this.setState({ isLoading: false, people: responseJson }));
   }

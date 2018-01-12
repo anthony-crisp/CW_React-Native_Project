@@ -1,5 +1,4 @@
-{
-  "people": [
+[
     {
       "name": "Adam Apple",
       "avatar": "http://dojo4.com/ro/people/brett-goulder/assets/profile/circular-photo.png",
@@ -67,4 +66,3 @@
       "score": 500
     }
   ]
-}
