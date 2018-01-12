@@ -1,7 +1,9 @@
 # CW_React-Native_Project
 
 ==============
+
 ## A coding challenge to to learn CW's full stack.
+
 ==============
 
 A simple mobile app that displays a scrolling list of users retrieved from a server.
